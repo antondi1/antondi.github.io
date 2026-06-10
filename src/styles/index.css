@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Base Styles ===== */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0f1512;
+    color: #dee4de;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: #6ee7b7;
+    color: #006649;
+  }
+}
+
+/* ===== Custom Utilities ===== */
+@layer utilities {
+  /* Neo-brutalist border with hover accent */
+  .neo-brutalist-border {
+    border: 1px solid #3d4a43;
+    transition: border-color 0.3s ease;
+  }
+  .neo-brutalist-border:hover {
+    border-color: #6ee7b7;
+  }
+
+  /* Accent text glow */
+  .accent-glow {
+    text-shadow: 0 0 15px rgba(110, 231, 183, 0.4);
+  }
+
+  /* Grid background pattern */
+  .grid-bg {
+    background-image:
+      linear-gradient(#171d1a 1px, transparent 1px),
+      linear-gradient(90deg, #171d1a 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Bento card style */
+  .bento-card {
+    border: 1px solid #1e1e2e;
+    background: #111118;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .bento-card:hover {
+    border-color: #6ee7b7;
+  }
+
+  /* Terminal block */
+  .terminal-block {
+    background: #1a1a28;
+    border: 1px solid #1e1e2e;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Neo-brutalist button */
+  .neo-brutalist-btn {
+    transition: all 0.1s ease;
+    border: 2px solid transparent;
+  }
+  .neo-brutalist-btn:active {
+    transform: translate(2px, 2px);
+  }
+
+  /* Cursor glow effect */
+  .cursor-glow {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(
+      circle,
+      rgba(110, 231, 183, 0.05) 0%,
+      rgba(15, 21, 18, 0) 70%
+    );
+    pointer-events: none;
+    position: fixed;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  /* Scroll reveal animations */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+  }
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .fade-up.delay-100 {
+    transition-delay: 100ms;
+  }
+  .fade-up.delay-200 {
+    transition-delay: 200ms;
+  }
+  .fade-up.delay-300 {
+    transition-delay: 300ms;
+  }
+
+  /* Hide scrollbar for timeline */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* ===== Custom Scrollbar ===== */
+body::-webkit-scrollbar {
+  width: 4px;
+}
+body::-webkit-scrollbar-track {
+  background: #0f1512;
+}
+body::-webkit-scrollbar-thumb {
+  background: #3d4a43;
+}
+body::-webkit-scrollbar-thumb:hover {
+  background: #6ee7b7;
+}
+
+/* ===== Mobile Nav Overlay ===== */
+.mobile-nav {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(15, 21, 18, 0.95);
+  backdrop-filter: blur(20px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.mobile-nav.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.mobile-nav a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  color: #dee4de;
+  transition: color 0.2s ease;
+}
+.mobile-nav a:hover {
+  color: #6ee7b7;
+}
+.mobile-nav-close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1rem;
+  color: #aaffd8;
+  cursor: pointer;
+  z-index: 101;
+}
